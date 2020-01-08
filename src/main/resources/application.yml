@@ -14,3 +14,11 @@ mybatis-plus:
   type-aliases-package: com.oracle.springbootrest.entity
   configuration:
     map-underscore-to-camel-case: true
+logging:
+  level:
+    root: info
+    com.oracle.springbootrest: debug
+#  file: D:\logs\app.log
+  file:
+    path: D:\logs\
+#    name: app.log
