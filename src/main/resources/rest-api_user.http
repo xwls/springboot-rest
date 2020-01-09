@@ -1,0 +1,6 @@
+POST http://localhost:8080/user
+Content-Type: application/x-www-form-urlencoded
+
+username=tom&password=tom12&age=180&email=tom@@tom.com
+
+###
