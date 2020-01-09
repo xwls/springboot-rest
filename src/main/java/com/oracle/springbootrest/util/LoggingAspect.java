@@ -1,9 +1,7 @@
 package com.oracle.springbootrest.util;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -43,6 +41,20 @@ public class LoggingAspect {
     public void after(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
         logger.debug("method {} end.....", name);
+    }
+
+    //返回通知，在目标方法返回内容时执行
+    @AfterReturning(pointcut = "execution(public * com.oracle.springbootrest.controller.BookController.*(..))", returning = "result")
+    public void afterReturning(JoinPoint joinPoint, Object result){
+        String name = joinPoint.getSignature().getName();
+        logger.debug("the method {} return => {}", name, result);
+    }
+
+    //异常通知，在目标方法出现异常是执行
+    @AfterThrowing(pointcut = "execution(public * com.oracle.springbootrest.controller.BookController.*(..))",throwing = "e")
+    public void afterThrowing(JoinPoint joinPoint, Throwable e){
+        String name = joinPoint.getSignature().getName();
+        logger.debug("the method {} exception => {}",name, e);
     }
 
 }

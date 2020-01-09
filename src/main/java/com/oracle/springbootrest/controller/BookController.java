@@ -50,4 +50,9 @@ public class BookController {
         return remove ? R.ok("删除成功") : R.failed("删除失败");
     }
 
+    @GetMapping("/length")
+    public R<Integer> length(String name){
+        return R.ok(name.length());
+    }
+
 }
